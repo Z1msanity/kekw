@@ -164,3 +164,48 @@ tsParticles.load("tsparticles", {
   }
 });
 
+// contact connection
+const contactForm = document.getElementById("contact-form");
+const toast = document.getElementById("toast");
+
+function showToast(message, type) {
+  toast.textContent = message;
+  toast.className = "toast show " + type;
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
+contactForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = contactForm.querySelector('input[name="name"]');
+  const email = contactForm.querySelector('input[name="email"]');
+  const message = contactForm.querySelector('textarea[name="message"]');
+
+  // reset errors
+  [name, email, message].forEach(input => input.classList.remove("error"));
+
+  if (!name.value || !email.value || !message.value) {
+    showToast("⚠️ Please fill in all fields", "error");
+
+    [name, email, message].forEach(input => {
+      if (!input.value) input.classList.add("error");
+    });
+
+    return;
+  }
+
+  emailjs.sendForm("service_o23xqwa", "template_mb790td", contactForm)
+    .then(() => {
+      showToast("✅ Message sent successfully!", "success");
+      contactForm.reset();
+    })
+    .catch((error) => {
+      showToast("❌ Failed to send. Try again.", "error");
+      console.error(error);
+    });
+});
+
+

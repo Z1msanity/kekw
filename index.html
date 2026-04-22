@@ -134,6 +134,9 @@
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Portfolio</button>
           </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
         </ul>
       </nav>
 
@@ -278,7 +281,7 @@
 
         <section class="clients">
 
-<h3 class="h3 clients-title">Programming Languages</h3>
+<h3 class="h3 clients-title">Modern Programming Technologies & Languages</h3>
 
           <ul class="clients-list has-scrollbar">
 
@@ -1004,7 +1007,59 @@
           </section>
         </div>
 
+
+
+<!--Contacts-->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1357.8369064761637!2d120.92324612791398!3d15.722402334740144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3390d7029d9d2189%3A0x4c4a51cc246adb88!2sCJ%20Mansion!5e0!3m2!1sen!2sph!4v1776862816035!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+            <form id="contact-form" class="form">
+
+            <div class="input-wrapper">
+              <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit">
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+    </div>
   </main>
+<!--Contact email-->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <script>
+  (function(){
+    emailjs.init("XoKZjotLCPHE7pZnn"); // from EmailJS dashboard
+  })();
+</script>
+
   <!--Background particles-->
   <script>
 const bars = document.querySelectorAll('.progress-fill');
@@ -1056,5 +1111,8 @@ function toggleAI() {
 ></iframe>
   </div>
 </div>
+
+<!-- contact -->
+<div id="toast" class="toast"></div>
 </body>
 </html>
