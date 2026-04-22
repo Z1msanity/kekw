@@ -2533,3 +2533,51 @@ html {
 .ai-button {
   animation: aiBounce 2.5s infinite;
 }
+
+@media (max-width: 768px) {
+  .avatar-box {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-box {
+    width: 85px;
+    height: 85px;
+    min-width: 85px;
+  }
+}
+
+/* ===== FIX AVATAR STRETCH (SAFE PATCH) ===== */
+
+.avatar-box {
+  position: relative;
+  width: 120px;          /* fixed base size */
+  height: 120px;         /* force square */
+  min-width: 120px;      /* prevents shrinking weirdly */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.avatar-box img.avatar,
+.avatar-box img.glitch {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* 🔥 prevents stretching */
+  display: block;
+}
+
+/* glitch overlay */
+.avatar-box img.glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.avatar-box:hover img.glitch {
+  opacity: 1;
+}
