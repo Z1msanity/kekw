@@ -1155,7 +1155,7 @@ main {
  * responsive larger than 450px screen
  */
 
-@media (min-width: 450px) {
+@media (min-width: 1024px) {
 
   /**
    * client
@@ -1182,27 +1182,22 @@ main {
  * responsive larger than 580px screen
  */
 
-@media (min-width: 580px) {
+@media (min-width: 1024px) {
 
   /**
    * CUSTOM PROPERTY
    */
 
   :root {
-
-    /**
-     * typography
-     */
-
-    --fs-1: 32px;
-    --fs-2: 24px;
-    --fs-3: 26px;
-    --fs-4: 18px;
-    --fs-6: 15px;
-    --fs-7: 15px;
-    --fs-8: 12px;
-
-  }
+  --fs-1: 32px;  /* headings */
+  --fs-2: 24px;
+  --fs-3: 20px;
+  --fs-4: 18px;
+  --fs-5: 17px;
+  --fs-6: 16px;
+  --fs-7: 15px;
+  --fs-8: 13px;
+}
 
 
 
@@ -1474,7 +1469,7 @@ main {
  * responsive larger than 768px screen
  */
 
-@media (min-width: 768px) {
+@media (min-width: 1024) {
 
   /**
    * REUSED STYLE
@@ -1614,7 +1609,7 @@ main {
   .main-content {
     position: relative;
     width: max-content;
-    margin: auto;
+    margin: 80px;
   }
 
 
@@ -2095,7 +2090,8 @@ body::before {
   }
 }
 
-/* Floating AI Container */
+
+
 .ai-container {
   position: fixed;
   bottom: 20px;
@@ -2103,56 +2099,52 @@ body::before {
   z-index: 9999;
 }
 
-/* Circle Button */
+/* Floating Button (black circle like Chatbase) */
 .ai-button {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #00f7ff, #0066ff);
+  width: 65px;
+  height: 65px;
+  background: #000;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
   color: #fff;
+  font-size: 26px;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(0,255,255,0.6);
-  transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
 }
 
 .ai-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(0,255,255,1);
+  box-shadow: 0 5px 25px rgba(255, 200, 0, 0.6);
 }
 
-/* Chat Box */
+/* Chatbox */
 .ai-chat {
-  width: 320px;
-  height: 420px;
-  background: #0f172a;
-  border-radius: 15px;
-  overflow: hidden;
+  width: 350px;
+  height: 500px;
   position: absolute;
-  bottom: 80px;
+  bottom: 85px;
   right: 0;
+  border-radius: 18px;
+  overflow: hidden;
   display: none;
-  flex-direction: column;
-  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+  background: #000;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+  animation: fadeIn 0.3s ease;
 }
 
-/* Header */
-.ai-chat-header {
-  background: linear-gradient(135deg, #00f7ff, #0066ff);
-  color: #fff;
-  padding: 10px;
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Close Button */
-.close-btn {
-  cursor: pointer;
+/* Smooth open animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Chat iframe */
@@ -2160,4 +2152,384 @@ body::before {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+.ai-button::after {
+  content: '';
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 200, 0, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.ai-button {
+  position: relative;
+}
+
+/* Green online dot */
+.ai-status {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 12px;
+  height: 12px;
+  background: #00ff88;
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+/* Pulsing effect */
+.ai-status::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #00ff88;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  animation: ping 1.5s infinite;
+  opacity: 0.6;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.ai-button:hover::before {
+  content: "AI Online";
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  background: #000;
+  color: #00ff88;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(0,255,136,0.5);
+}
+
+.work-experience .content-card {
+  margin-top: 100px;
+}
+
+
+.content-card {
+  width: 100%;
+  max-width: 100%;
+  padding: 25px 30px;
+  border-radius: 20px;
+}
+
+.timeline-text,
+.service-item-text,
+p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.timeline-item span {
+  font-size: 14px;
+  color: #facc15; /* yellow accent */
+  font-weight: 500;
+}
+
+.content-card {
+  background: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 20px;
+  transition: width 1.5s ease;
+}
+
+/* LEVEL COLORS (shared everywhere) */
+.progress-fill.intermediate {
+  background: linear-gradient(90deg, #00ff88, #00ffaa);
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.progress-fill.beginner {
+  background: linear-gradient(90deg, #facc15, #ffd700);
+  box-shadow: 0 0 10px #facc15;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  color: #facc15;
+}
+
+/* Tooltip bubble */
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 140%;
+  right: 0;
+  background: rgba(20,20,20,0.9);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: 0.3s;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Show on hover */
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-header img {
+  width: 60px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+.skills-main-title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 30px;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+
+.skills-main-title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Pills container */
+.skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Base pill */
+.skill-pill {
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* INTERMEDIATE (green) */
+.skill-pill.intermediate {
+  border-color: rgba(0,255,136,0.4);
+}
+
+.skill-pill.intermediate:hover {
+  box-shadow: 0 0 15px rgba(0,255,136,0.6);
+  border-color: #00ff88;
+}
+
+/* BEGINNER (yellow) */
+.skill-pill.beginner {
+  border-color: rgba(250,204,21,0.4);
+}
+
+.skill-pill.beginner:hover {
+  box-shadow: 0 0 15px rgba(250,204,21,0.6);
+  border-color: #facc15;
+}
+
+/* Hover lift */
+.skill-pill:hover {
+  transform: translateY(-3px);
+}
+
+/* TOOLTIP */
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background: rgba(20,20,20,0.95);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Show tooltip */
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.skill-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.skill-pill:hover::before {
+  opacity: 1;
+}
+
+.skill-progress-header h5 {
+  color: #e5e5e5; /* softer white */
+  letter-spacing: 0.5px;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%; /* position above */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* KEY FIXES */
+  width: max-content;        /* auto width based on text */
+  max-width: 250px;         /* prevent it from getting too wide */
+  white-space: normal;      /* allow wrapping */
+  word-wrap: break-word;    /* break long words if needed */
+
+  padding: 8px 10px;
+  border-radius: 6px;
+
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+
+  z-index: 1000;
+}
+
+/* Show tooltip on hover */
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+.skills-pills {
+  overflow: visible;
+}
+
+html {
+  font-size: 110%;
+}
+
+.tooltip::after {
+  font-size: 13px;
+  padding: 10px 12px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 120%;
+  }
+}
+
+.ai-button::before {
+  content: "Chat with AI";
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: #000;
+  color: #00ff88;
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  font-size: 12px;
+  white-space: nowrap;
+
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+
+  box-shadow: 0 0 10px rgba(0,255,136,0.4);
+}
+
+/* show on hover */
+.ai-button:hover::before {
+  opacity: 1;
+  right: 75px;
+}
+
+@keyframes aiBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.ai-button {
+  animation: aiBounce 2.5s infinite;
 }
