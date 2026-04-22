@@ -167,6 +167,12 @@ tsParticles.load("tsparticles", {
 // contact connection
 const contactForm = document.getElementById("contact-form");
 const toast = document.getElementById("toast");
+const popup = document.getElementById("popup");
+const popupMsg = document.getElementById("popup-message");
+
+// LIMIT
+const MAX_EMAILS = 2;
+const STORAGE_KEY = "email_count";
 
 function showToast(message, type) {
   toast.textContent = message;
@@ -177,14 +183,42 @@ function showToast(message, type) {
   }, 3000);
 }
 
+// Popup controls
+function showPopup(message) {
+  popupMsg.textContent = message;
+  popup.classList.add("show");
+}
+
+function hidePopup() {
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 2000);
+}
+
+// Count functions
+function getEmailCount() {
+  return parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+}
+
+function incrementEmailCount() {
+  let count = getEmailCount();
+  localStorage.setItem(STORAGE_KEY, count + 1);
+}
+
 contactForm.addEventListener("submit", function(e) {
   e.preventDefault();
+
+  let currentCount = getEmailCount();
+
+  if (currentCount >= MAX_EMAILS) {
+    showToast("🚫 Limit reached! Only 2 messages allowed.", "error");
+    return;
+  }
 
   const name = contactForm.querySelector('input[name="name"]');
   const email = contactForm.querySelector('input[name="email"]');
   const message = contactForm.querySelector('textarea[name="message"]');
 
-  // reset errors
   [name, email, message].forEach(input => input.classList.remove("error"));
 
   if (!name.value || !email.value || !message.value) {
@@ -197,15 +231,56 @@ contactForm.addEventListener("submit", function(e) {
     return;
   }
 
+  // 🚀 SHOW POPUP (on click)
+  showPopup("📤 Sending email...");
+
   emailjs.sendForm("service_o23xqwa", "template_mb790td", contactForm)
     .then(() => {
-      showToast("✅ Message sent successfully!", "success");
+      incrementEmailCount();
+
+      // ✅ SUCCESS MESSAGE
+      popupMsg.textContent = "✅ Email Sent!";
+      hidePopup();
+
+      showToast("Message sent successfully!", "success");
       contactForm.reset();
     })
     .catch((error) => {
-      showToast("❌ Failed to send. Try again.", "error");
+      popupMsg.textContent = "❌ Failed to send";
+      hidePopup();
+
+      showToast("Error sending message", "error");
       console.error(error);
     });
 });
 
 
+
+
+
+
+
+// Get current count
+function getEmailCount() {
+    return parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+}
+
+// Increase count
+function incrementEmailCount() {
+    let count = getEmailCount();
+    localStorage.setItem(STORAGE_KEY, count + 1);
+}
+
+contactForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    // Check limit first
+    let currentCount = getEmailCount();
+    
+    if (currentCount >= MAX_EMAILS) {
+        showToast("⚠️ Limit reached! Only 2 messages allowed.", "error");
+        return;
+    }
+    
+    incrementEmailCount()
+})
