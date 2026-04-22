@@ -2094,3 +2094,70 @@ body::before {
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
   }
 }
+
+/* Floating AI Container */
+.ai-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Circle Button */
+.ai-button {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #00f7ff, #0066ff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+  transition: 0.3s;
+}
+
+.ai-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0,255,255,1);
+}
+
+/* Chat Box */
+.ai-chat {
+  width: 320px;
+  height: 420px;
+  background: #0f172a;
+  border-radius: 15px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+
+/* Header */
+.ai-chat-header {
+  background: linear-gradient(135deg, #00f7ff, #0066ff);
+  color: #fff;
+  padding: 10px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close Button */
+.close-btn {
+  cursor: pointer;
+}
+
+/* Chat iframe */
+.ai-chat iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

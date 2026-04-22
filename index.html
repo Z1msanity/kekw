@@ -947,21 +947,32 @@
 <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- Add Chatbase chatbot here -->
-    <script>
-      window.embeddedChatbotConfig = {
-        chatbotId: "YOUR_BOT_ID", // Replace with your actual bot ID
-        domain: "www.chatbase.co"
-      }
-    </script>
-    <script
-      src="https://www.chatbase.co/embed.min.js"
-      defer
-    >
-    </script>
+  <script>
+function toggleAI() {
+  const chat = document.getElementById("aiChat");
+  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+}
+</script>
+<div class="ai-container">
+
+  <!-- Circle Button -->
+  <div class="ai-button" onclick="toggleAI()">
+    ⚡
+  </div>
+
+  <!-- Chat Popup -->
+  <div class="ai-chat" id="aiChat">
+    <div class="ai-chat-header">
+      Victor Lance AI assistant
+      <span onclick="toggleAI()" class="close-btn">✖</span>
+    </div>
+
+    <iframe 
+      src="https://www.chatbase.co/chatbot-iframe/YOUR_BOT_ID"
+      frameborder="0">
+    </iframe>
+  </div>
+
 </div>
 </body>
 </html>
