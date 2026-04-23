@@ -8,6 +8,8 @@
   <title>Personal Portfolio</title>
 
 
+
+
 <!--favicon-->
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -16,6 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://app.cal.com">
+  <link rel="dns-prefetch" href="https://app.cal.com">
 </head>
 <body>
 
@@ -24,6 +28,7 @@
 <div id="tsparticles"></div>
   <main>
     
+
 
 
 <!--sidebar-->
@@ -1060,50 +1065,31 @@
 
       </article>
 
-      <!-- lets connect -->
+<!-- lets connect -->
 
-      <article class="contact" data-page="let's connect">
+      <article class="connect" data-page="let's connect">
 
-<div class="cal-button-wrapper">
-  <button class="cal-btn" onclick="showCal(event)">
-    📅 Book a Call
-    <span class="ripple"></span>
-  </button>
+<div class="calendar-header">
+<h1 style="color:gold;" >Schedule for a Meeting Here !</h1>
 </div>
-
-<!-- STATUS -->
-<p id="availabilityStatus" class="availability-text">
-  ⏳ Checking availability...
-</p>
-
-<div id="calContainer" class="cal-container">
-
-  <!-- CLOSE BUTTON -->
-  <button class="cal-close" onclick="hideCal()"></button>
-
-  <!-- TIMEZONE -->
-  <p id="timezoneText" class="timezone-text"></p>
-
-  <!-- SKELETON LOADER -->
-  <div id="calSkeleton" class="cal-skeleton"></div>
 
   <!-- CALENDAR -->
+  <div class="calendar-container">
   <iframe 
-    id="calFrame"
-    src="https://app.cal.com/victorlance-figueroa-tkwzwt"
-    loading="lazy">
-  </iframe>
+  src="https://cal.com/victorlance-figueroa-tkwzwt"
+  loading="lazy"
+  width="100%"
+  height="700">
+</iframe>
 
 </div>
-
-
-
   </section>
-
 </article>
 
 
   </main>
+
+
 <!--Contact email-->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
@@ -1112,6 +1098,8 @@
     emailjs.init("XoKZjotLCPHE7pZnn"); // from EmailJS dashboard
   })();
 </script>
+
+
 
   <!--Background particles-->
   <script>
@@ -1127,9 +1115,10 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.4 });
-
 bars.forEach(bar => observer.observe(bar));
 </script>
+
+
   <script>
 function toggleAI() {
   const chat = document.getElementById("aiChat");
@@ -1141,21 +1130,23 @@ function toggleAI() {
   }
 }
 </script>
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <div class="ai-container">
+
 
   <!--AI ASSISTANT-->
+  <div class="ai-container">
   <div class="ai-button" onclick="toggleAI()">
   💬
   <span class="ai-status"></span>
 </div>
-
   <!-- Chat Popup -->
   <div class="ai-chat" id="aiChat">
-
     <iframe
     src="https://www.chatbase.co/chatbot-iframe/PUKjxKbjiX4WuT383pv9p"
     width="100%"
@@ -1165,7 +1156,11 @@ function toggleAI() {
   </div>
 </div>
 
+
 <!-- contact -->
 <div id="toast" class="toast"></div>
+
+
+<script type="text/javascript" src="https://cal.com/embed.js" defer></script>
 </body>
 </html>

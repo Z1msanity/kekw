@@ -340,3 +340,4 @@ function hideCal() {
     cal.classList.remove("expand");
   }, 300);
 }
+

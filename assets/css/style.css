@@ -325,7 +325,7 @@ main {
 
 .avatar-box {
   background: var(--bg-gradient-onyx);
-  border-radius: 20px;
+  border-radius: 50px;
 }
 
 .info-content .name {
@@ -501,6 +501,7 @@ main {
 \*-----------------------------------*/
 
 .about .article-title { margin-bottom: 15px; }
+.about .article-title { margin-top: 45px; }
 
 .about-text {
   color: var(--light-gray);
@@ -707,8 +708,8 @@ main {
 .modal-avatar-box {
   background: var(--bg-gradient-onyx);
   width: max-content;
-  border-radius: 14px;
-  margin-bottom: 15px;
+  border-radius: 19px;
+  margin-bottom: 20px;
   box-shadow: var(--shadow-2);
 }
 
@@ -778,7 +779,7 @@ main {
 \*-----------------------------------*/
 
 .article-title { margin-bottom: 30px; }
-
+.article-title { margin-top: 45px; }
 
 /**
  * education and experience 
@@ -1261,7 +1262,7 @@ main {
 
   .sidebar-info { gap: 25px; }
 
-  .avatar-box { border-radius: 30px; }
+  .avatar-box { border-radius: 50px; }
 
   .avatar-box img { width: 120px; }
 
@@ -1446,6 +1447,10 @@ main {
     height: 380px;
     border-radius: 18px;
   }
+
+  .mapbox:hover {
+  box-shadow: 0 0 15px rgba(255, 200, 0, 0.5);
+}
 
   .input-wrapper {
     gap: 30px;
@@ -2817,303 +2822,34 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 }
 
-
-/* =========================
-   CALENDAR LINK
-========================= */
-.cal-link {
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-.cal-link:hover {
-  color: #facc15;
-  text-decoration: underline;
-}
-
-
-/* =========================
-   AVAILABILITY TEXT
-========================= */
-.availability-text {
+.calendar-header {
   text-align: center;
-  margin-top: 12px;
+  margin-top: 60px;
   font-size: 14px;
   padding: 6px 12px;
   border-radius: 999px;
-  display: inline-block;
+  display: center;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
 
-  background: rgba(34, 197, 94, 0.1);
+  background: gray;
 }
 
-.available {
-  color: #22c55e;
+.calendar-container:hover {
+  box-shadow: 0 0 15px rgba(255, 200, 0, 0.5);
 }
 
-.not-available {
-  color: #ef4444;
-}
-
-
-/* =========================
-   CALENDAR CONTAINER
-========================= */
-.cal-container {
-  position: relative;
+.calendar-container {
   width: 100%;
+  max-width: 900px;
+  margin: auto;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.calendar-container iframe {
+  border: 40px;
   margin-top: 15px;
-
-  background: #020617;
-  border-radius: 16px;
-  padding: 12px;
-
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
-
-  /* ANIMATION */
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transform: translateY(-20px);
-  transition: all 0.5s ease;
 }
-
-.cal-container.active {
-  max-height: 800px;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* =========================
-   TIMEZONE TEXT
-========================= */
-.timezone-text {
-  font-size: 12px;
-  color: #94a3b8;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-
-/* =========================
-   SKELETON LOADER
-========================= */
-.cal-skeleton {
-  width: 100%;
-  height: 500px;
-  border-radius: 12px;
-
-  background: linear-gradient(
-    90deg,
-    #0f172a 25%,
-    #1e293b 50%,
-    #0f172a 75%
-  );
-
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-
-/* =========================
-   IFRAME
-========================= */
-.cal-container iframe {
-  width: 100%;
-  height: 500px;
-  border-radius: 12px;
-  border: none;
-  display: none;
-  margin-top: 60px;
-}
-
-
-/* =========================
-   CLOSE BUTTON (GLOW)
-========================= */
-.cal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
-  transition: 0.3s ease;
-}
-
-/* X icon */
-.cal-close::before,
-.cal-close::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 18px;
-  height: 2px;
-  background: white;
-}
-
-.cal-close::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.cal-close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-/* Hover glow */
-.cal-close:hover {
-  box-shadow: 0 0 20px rgba(250, 204, 21, 1);
-  transform: scale(1.1);
-}
-
-
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .cal-container iframe {
-    height: 450px;
-  }
-
-  .cal-skeleton {
-    height: 450px;
-  }
-}
-
-/* TABLET */
-@media (min-width: 481px) and (max-width: 768px) {
-  .cal-container iframe {
-    height: 500px;
-  }
-}
-
-/* LAPTOP / DESKTOP */
-@media (min-width: 769px) {
-  .cal-container iframe {
-    height: 600px;
-  }
-
-  .cal-skeleton {
-    height: 600px;
-  }
-}
-
-
-/* SHIMMER EFFECT */
-@keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* HIDE iframe initially */
-#calFrame {
-  display: none;
-}
-
-.contact[data-page="let's connect"] {
-  padding-top: 80px;
-}
-
-/* CENTER WRAPPER */
-.cal-button-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* BUTTON STYLE */
-.cal-btn {
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 600;
-
-  border: none;
-  border-radius: 12px;
-
-  background: #facc15;
-  color: #020617;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
-}
-
-/* HOVER EFFECT */
-.cal-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 25px rgba(250, 204, 21, 1);
-    display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.cal-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-/* RIPPLE */
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  transform: scale(0);
-  background: rgba(255, 255, 255, 0.5);
-  animation: ripple-effect 0.6s linear;
-  pointer-events: none;
-}
-
-@keyframes ripple-effect {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-/* START STATE */
-.cal-container {
-  transform-origin: top center;
-}
-
-/* MORPH EFFECT */
-.cal-container.expand {
-  animation: morphIn 0.5s ease forwards;
-}
-
-@keyframes morphIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(-20px);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.02) translateY(5px);
-  }
-  100% {
-    transform: scale(1) translateY(0);
-  }
-}
-
