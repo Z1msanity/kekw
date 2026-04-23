@@ -116,6 +116,7 @@
 
 
 <!--maincontent-->
+
     <div class="main-content">
 
 
@@ -136,6 +137,9 @@
           </li>
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Let's Connect</button>
           </li>
         </ul>
       </nav>
@@ -1055,7 +1059,50 @@
         </section>
 
       </article>
-    </div>
+
+      <!-- lets connect -->
+
+      <article class="contact" data-page="let's connect">
+
+<div class="cal-button-wrapper">
+  <button class="cal-btn" onclick="showCal(event)">
+    📅 Book a Call
+    <span class="ripple"></span>
+  </button>
+</div>
+
+<!-- STATUS -->
+<p id="availabilityStatus" class="availability-text">
+  ⏳ Checking availability...
+</p>
+
+<div id="calContainer" class="cal-container">
+
+  <!-- CLOSE BUTTON -->
+  <button class="cal-close" onclick="hideCal()"></button>
+
+  <!-- TIMEZONE -->
+  <p id="timezoneText" class="timezone-text"></p>
+
+  <!-- SKELETON LOADER -->
+  <div id="calSkeleton" class="cal-skeleton"></div>
+
+  <!-- CALENDAR -->
+  <iframe 
+    id="calFrame"
+    src="https://app.cal.com/victorlance-figueroa-tkwzwt"
+    loading="lazy">
+  </iframe>
+
+</div>
+
+
+
+  </section>
+
+</article>
+
+
   </main>
 <!--Contact email-->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>

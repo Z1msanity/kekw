@@ -274,3 +274,69 @@ document.addEventListener("click", function (e) {
     }
   }
 });
+
+const calFrame = document.getElementById("calFrame");
+const skeleton = document.getElementById("calSkeleton");
+
+calFrame.onload = function () {
+  skeleton.style.display = "none";
+  calFrame.style.display = "block";
+};
+
+const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+document.getElementById("timezoneText").textContent =
+  "Your Time Zone: " + tz;
+
+  const status = document.getElementById("availabilityStatus");
+
+// Simulated availability logic
+const hour = new Date().getHours();
+
+if (hour >= 9 && hour <= 18) {
+  status.textContent = "🟢 Available today (within working hours)";
+  status.classList.add("available");
+} else {
+  status.textContent = "🔴 Not available right now";
+  status.classList.add("not-available");
+}
+
+function showCal() {
+  console.log("CLICK WORKING"); // 👈 test
+  const cal = document.getElementById("calContainer");
+  cal.classList.add("active");
+}
+
+function showCal(e) {
+  const button = e.currentTarget;
+
+  // RIPPLE EFFECT
+  const ripple = document.createElement("span");
+  ripple.classList.add("ripple");
+
+  const rect = button.getBoundingClientRect();
+  ripple.style.left = (e.clientX - rect.left) + "px";
+  ripple.style.top = (e.clientY - rect.top) + "px";
+
+  button.appendChild(ripple);
+
+  setTimeout(() => {
+    ripple.remove();
+  }, 600);
+
+  // OPEN CALENDAR
+  const cal = document.getElementById("calContainer");
+  cal.classList.add("active");
+
+  // MORPH EFFECT TRIGGER
+  cal.classList.add("expand");
+}
+
+function hideCal() {
+  const cal = document.getElementById("calContainer");
+
+  cal.classList.remove("active");
+
+  setTimeout(() => {
+    cal.classList.remove("expand");
+  }, 300);
+}
